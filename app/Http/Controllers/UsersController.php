@@ -17,6 +17,6 @@ class UsersController extends Controller
     {
         $users = $this->user->all();
 
-        dd($users);
+        return view("users.index", compact('users'));
     }
 }
