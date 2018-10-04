@@ -11,8 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::get('users', 'UsersController@index')->name('users');
+
+
+Route::get('datas', 'UsersController@data')->name('datas');
+
+
+
+Route::get('create', 'DisplayDataController@create');
+Route::get('index', 'DisplayDataController@index');
