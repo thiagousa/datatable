@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 use App\User;
-
 use Yajra\Datatables\Datatables;
 
 class UsersController extends Controller
@@ -17,13 +14,13 @@ class UsersController extends Controller
 
     public function index()
     {
-        $users = $this->user->all();
-
-        return view("users.index", compact('users'));
+        return view('users.index');
     }
 
-    public function data()
+    public function usersDataTables()
     {
-        return Datatables::of(User::query())->make(true);
+        $users = User::select(['id', 'name', 'email']);
+
+        return DataTables::of($users)->make();
     }
 }
