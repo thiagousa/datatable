@@ -15,49 +15,34 @@
 
 <div class="box box-primary">
     <div class="box-header with-border">
-      <h3 class="box-title">Edit a Post</h3>
+      <h3 class="box-title">Show a Post</h3>
     </div>
     <!-- /.box-header -->
-    <!-- form start -->
-    <form action="{{ route('posts.update',['id' => $post->id ]) }}" method="post" id="form-cadastro-categoria">
-            {{ csrf_field() }}
-            {{ method_field('put') }}
-
-       <div class="box-body">
+        <div class="box-body">
           
         <div class="form-group">
           <label>Title</label>
-          <input type="text" class="form-control" id="title" name='title' value="{{$post->title}}">
-          @if($errors->has('title'))
-          <span class="help-block alert alert-danger">
-            <strong>{{$errors->first('title')}}</strong>
-          </span>
-        @endif
+          <input type="text" class="form-control" id="title" name='title' value="{{$post->title}}" disabled>
+          
         </div>
         <div class="form-group">
 
           <label for="tax">Body</label>
-          <textarea class="form-control" id="body" name='body'>{{$post->body}}</textarea>
-          @if($errors->has('body'))
-          <span class="help-block alert alert-danger">
-            <strong>{{$errors->first('body')}}</strong>
-          </span>
-        @endif
+          <textarea class="form-control" id="body" name='body' disabled>{{$post->body}}</textarea>
+  
         </div>
         
         <div class="form-group">
             <label>Author*</label>
-            <select class="form-control" name='user_id'>
+            <select class="form-control" name='user_id' disabled>
               @foreach ($users as $user)
               <option value="{{ $user->id }}" {{ $post->user_id == $user->id ? 'selected' : '' }}>{{ $user->name }}</option>
-                  
               @endforeach
             </select>
           </div>
       <!-- /.box-body -->
 
-      <div class="box-footer">
-        <button type="submit" class="btn btn-primary">Enviar</button>
+  <a href="{{ route('posts.list')}}" class="btn btn-primary">Voltar</a>
       </div>
     </form>
   </div>

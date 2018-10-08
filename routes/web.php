@@ -8,6 +8,8 @@ Route::get('/users-datatables', 'UsersController@usersDataTables')->name('users.
 
 Route::prefix('posts')->group(function () {
     Route::get('/', 'PostsController@index')->name('posts.index');
+    Route::get('/{post}/show', 'PostsController@show')->name('posts.show');
+    Route::get('/list', 'PostsController@list')->name('posts.list');
     Route::get('/create', 'PostsController@create')->name('posts.create');
     Route::get('/{post}/edit', 'PostsController@edit')->name('posts.edit');
     Route::post('/', 'PostsController@store')->name('posts.store');

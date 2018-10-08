@@ -60,7 +60,7 @@ class PostsController extends Controller
     {
         (new Post())->fill($request->validated())->save();
 
-        return redirect()->back();
+        return view('posts.list');
     }
 
     /**
@@ -70,10 +70,19 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function list(Post $post)
     {
+        $posts = $this->Post->all();
+        return view('posts.list', compact('posts'));
     }
+    
 
+
+    public function show(Post $post, User $user)
+    {
+        $users = $this->User->all();
+        return view('posts.show', compact('post', 'users'));
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -100,7 +109,7 @@ class PostsController extends Controller
     {
         $post->fill($request->validated())->update();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.list');
     }
 
     /**
@@ -114,6 +123,6 @@ class PostsController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.list');
     }
 }
