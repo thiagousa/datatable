@@ -34,7 +34,12 @@ class PostsController extends Controller
     {
         $posts = Post::select(['id', 'title', 'created_at']);
 
-        return DataTables::of($posts)->make();
+        return Datatables::of($posts)
+        ->addColumn('action', function ($post) {
+            return '<a href="posts/'.$post->id.'/show" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View </a> <a href="posts/'.$post->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="posts/'.$post->id.'/delete" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+        })
+        ->editColumn('id', '{{$id}}')
+        ->make(true);
     }
 
     /**
@@ -60,7 +65,7 @@ class PostsController extends Controller
     {
         (new Post())->fill($request->validated())->save();
 
-        return view('posts.list');
+        return view('posts.index');
     }
 
     /**
@@ -109,7 +114,7 @@ class PostsController extends Controller
     {
         $post->fill($request->validated())->update();
 
-        return redirect()->route('posts.list');
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -123,6 +128,6 @@ class PostsController extends Controller
     {
         $post->delete();
 
-        return redirect()->route('posts.list');
+        return redirect()->route('posts.index');
     }
 }

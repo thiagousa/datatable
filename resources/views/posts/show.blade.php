@@ -42,7 +42,7 @@
           </div>
       <!-- /.box-body -->
 
-  <a href="{{ route('posts.list')}}" class="btn btn-primary">Voltar</a>
+  <a href="{{ route('posts.index')}}" class="btn btn-primary">Voltar</a>
       </div>
     </form>
   </div>

@@ -39,7 +39,7 @@
         </div>
                 
          <div class="box-footer clearfix">
-           <a href="{{ route('posts.create') }}"><button type="submit" class="btn btn-primary">Adicionar um Novo</button></a>
+           <a href="{{ route('posts.create') }}"><button type="submit" class="btn btn-primary">Add New Post</button></a>
         </div>
     </body>
     </html>
