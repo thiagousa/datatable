@@ -35,10 +35,9 @@ class PostsController extends Controller
         $posts = Post::select(['id', 'title', 'created_at']);
 
         return Datatables::of($posts)
-        ->addColumn('action', function ($post) {
-            return '<a href="posts/'.$post->id.'/show" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> View </a> <a href="posts/'.$post->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a> <a href="posts/'.$post->id.'/delete" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+        ->addColumn('id-post', function ($post) {
+            return $post->id;
         })
-        ->editColumn('id', '{{$id}}')
         ->make(true);
     }
 
@@ -78,16 +77,17 @@ class PostsController extends Controller
     public function list(Post $post)
     {
         $posts = $this->Post->all();
+
         return view('posts.list', compact('posts'));
     }
-    
-
 
     public function show(Post $post, User $user)
     {
         $users = $this->User->all();
+
         return view('posts.show', compact('post', 'users'));
     }
+
     /**
      * Show the form for editing the specified resource.
      *

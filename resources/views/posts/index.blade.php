@@ -36,20 +36,27 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script>
-    $(function() {
-        $('#posts').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: "{{ route('posts.datatables') }}",
-                columns: [
-                {data: 'id', name: 'id'},
-                {data: 'title', name: 'title'},
-                {data: 'created_at', name: 'created_at'},
-                {data: 'action', name: 'action', orderable: false, searchable: false}
-                          
-                ],
-        });
+    (function(){
+    $('#posts').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax:{
+            url: '{{ route('posts.datatables') }}',
+          
+        },
+        columns: [
+            {data: 'id'},
+            {data: 'title'},
+            {data: 'created_at'},
+            { 
+                data: 'id-post',
+                render: function(data, type, row, meta) {
+                    return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
+                } 
+            },
+        ]
     });
+})();
     </script>
 </body>
 </html>
