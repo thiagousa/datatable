@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Posts</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
     
@@ -51,7 +51,7 @@
             { 
                 data: 'id-post',
                 render: function(data, type, row, meta) {
-                    return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
+                    return '<a href="' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
                 } 
             },
         ]
