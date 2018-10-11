@@ -1,6 +1,14 @@
 <?php
 
-Route::get('/', 'UsersController@index')->name('users.index');
+use App\Http\Resources\Post as PostResource;
+//Route::get('/', 'UsersController@index')->name('users.index');
+
+Route::get('/', function (){
+    $posts = App\Post::with('user')->get();
+
+    return new PostResource::collection($posts);
+});
+
 
 Route::get('/users', 'UsersController@index')->name('users.index');
 

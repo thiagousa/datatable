@@ -9,6 +9,7 @@ use Yajra\Datatables\Datatables;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
 
+
 class PostsController extends Controller
 {
     public $user;
@@ -27,7 +28,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+      return view('posts.index');
     }
 
     public function postsDataTables()
