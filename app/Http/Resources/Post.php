@@ -17,7 +17,7 @@ class Post extends JsonResource
         return [
         'id' => $this->id,
         'title' => $this->title,
-        'name' => $this->user->name,
+        'name' => optional($this->user)->name,
         'id-post' => $this->id,
     ];
     }
