@@ -1,13 +1,15 @@
 <?php
+use App\Post;
+use App\Http\Resources\PostCollection as PostCollection;
+use Yajra\Datatables\Datatables;
 
-use App\Http\Resources\Post as PostResource;
 //Route::get('/', 'UsersController@index')->name('users.index');
 
-Route::get('/', function (){
-    $posts = App\Post::with('user')->get();
-
-    return new PostResource::collection($posts);
-});
+Route::get('/data', function () {
+    $posts = Post::with('user')->get();
+    $data = new PostCollection($posts);
+    return Datatables::of($data);
+})->name('data');
 
 
 Route::get('/users', 'UsersController@index')->name('users.index');
@@ -23,5 +25,5 @@ Route::prefix('posts')->group(function () {
     Route::post('/', 'PostsController@store')->name('posts.store');
     Route::put('/{post}/update', 'PostsController@update')->name('posts.update');
     Route::get('/{post}/delete', 'PostsController@delete')->name('posts.delete');
-    Route::get('/posts-datatables', 'PostsController@postsDataTables')->name('posts.datatables');
+    Route::get('/datatables', 'PostsController@postsDataTables')->name('posts.datatables');
 });

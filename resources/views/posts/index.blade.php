@@ -25,7 +25,7 @@
                 <tr>
                     <th>Id</th>
                     <th>Title</th>
-                    <th>created_at</th>
+                    <th>Name</th>
                     <th>action</th>
                           </tr>
             </thead>
@@ -47,11 +47,11 @@
         columns: [
             {data: 'id'},
             {data: 'title'},
-            {data: 'created_at'},
+            {data: 'name'},
             { 
                 data: 'id-post',
                 render: function(data, type, row, meta) {
-                    return '<a href="' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
+                    return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
                 } 
             },
         ]

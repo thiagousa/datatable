@@ -14,11 +14,11 @@ class Post extends JsonResource
      */
     public function toArray($request)
     {
-        return [ 
-        'id' => $this->id,    
-        'title' => $this->title,  
+        return [
+        'id' => $this->id,
+        'title' => $this->title,
         'name' => $this->user->name,
-        'id-post' => $this->id, 
+        'id-post' => $this->id,
     ];
     }
 }
