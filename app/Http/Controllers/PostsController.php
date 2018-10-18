@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
-use App\Http\Resources\Post as PostResources;
+use Illuminate\Support\Facades\DB;
 
 class PostsController extends Controller
 {
@@ -33,9 +33,12 @@ class PostsController extends Controller
 
     public function postsDataTables()
     {
-        $datatable = DataTables::of(PostResources::collection(Post::all()))->toJson();
-        
-        return $datatable;
+        $posts = DB::table('posts')
+        ->join('users', 'users.id', '=', 'posts.user_id')
+        ->select('posts.id', 'posts.title', 'users.name')
+        ->get();
+
+        return DataTables::of($posts)->make();
     }
 
     /**
