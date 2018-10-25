@@ -36,12 +36,13 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
     <script>
+    var link = "http://" + window.location.hostname + "/posts/datatables";
     (function(){
     $('#posts').DataTable({
         processing: true,
         serverSide: true,
         ajax:{
-            url: '{{ route('posts.datatables') }}',
+            url: link,
           
         },
         columns: [
