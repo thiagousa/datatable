@@ -1,22 +1,30 @@
+import $ from 'jquery'
+import 'datatables.net'
+import 'datatables.net-bs'
 
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+//Base Url
+const dataUrl =  `${document.URL}/datatables`;
 
-require('./bootstrap');
+// Tables
+const postsTable = $('#posts');
 
-window.Vue = require('vue');
+//Datatables
+postsTable.DataTable({
+    processing: true,
+    serverSide: true,
+    ajax: {
+        url: dataUrl,
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
-
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
-const app = new Vue({
-    el: '#app'
+    },
+    columns: [
+        { data: 'id' },
+        { data: 'title' },
+        { data: 'name' },
+        {
+            data: 'id',
+            render: function (data, type, row, meta) {
+                return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
+            }
+        },
+    ]
 });

@@ -32,33 +32,6 @@
         </table>
     </div>
     
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>  
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-    <script>
-    var link =  document.URL+"/datatables";
-
-    (function(){
-    $('#posts').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax:{
-            url: link,
-          
-        },
-        columns: [
-            {data: 'id'},
-            {data: 'title'},
-            {data: 'name'},
-            { 
-                data: 'id',
-                render: function(data, type, row, meta) {
-                    return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
-                } 
-            },
-        ]
-    });
-})();
-    </script>
+    <script src="{{ asset('./js/app.js') }}"></script>  
 </body>
 </html>
