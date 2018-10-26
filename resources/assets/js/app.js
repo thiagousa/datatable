@@ -23,7 +23,8 @@ postsTable.DataTable({
         {
             data: 'id',
             render: function (data, type, row, meta) {
-                return '<a href="posts/' + data + '/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/' + data + '/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/' + data + '/delete" class="btn btn-danger btn-sm">Remover</a>'
+                return `<a href="posts/${data}/show" class="btn btn-primary btn-sm">Detalhes</a> <a href="posts/${data}/edit" class="btn btn-warning btn-sm">Editar</a> <a href="posts/${data}/delete" class="btn btn-danger btn-sm">Remover</a>`;
+           
             }
         },
     ]
